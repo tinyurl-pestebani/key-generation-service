@@ -1,0 +1,28 @@
+[package]
+name = "key-generation-service"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.99"
+redis = { version = "0.32.0", features = ["aio", "tokio-comp"] }
+tonic = { version = "0.13.1", features = [] }
+tokio = { version = "1.44.2", features = ["rt", "macros", "rt-multi-thread", "signal"] }
+rand = "0.9.1"
+openssl = { version = "0.10.73", features = ["vendored"] }
+tracing = "0.1.41"
+thiserror = "2.0.16"
+tonic-tracing-opentelemetry = "0.29.0"
+rust-otel-setup = { git = "https://github.com/tinyurl-pestebani/rust-otel-setup.git" }
+rust-proto-pkg = { git = "https://github.com/tinyurl-pestebani/rust-proto-pkg.git" }
+
+[dev-dependencies]
+mockall = "0.13.1"
+
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
