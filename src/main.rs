@@ -39,7 +39,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .serve_with_shutdown(addr, async {
             tokio::signal::ctrl_c().await.expect("failed to install CTRL+C signal handler");
             time::sleep(Duration::from_secs(1)).await;
-            otl_object.stop().unwrap();
+            otl_object.stop().expect("Failed to shut down tracer");
         })
         .await?;
     Ok(())

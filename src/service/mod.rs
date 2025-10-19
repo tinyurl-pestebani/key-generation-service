@@ -9,7 +9,7 @@ use crate::generator::Generator;
 /// `CustomKeyGeneratorService` is the implementation of the `KeyGeneratorService` trait.
 #[derive(Debug)]
 pub struct CustomKeyGeneratorService {
-    pub(crate) generator: Arc<dyn Generator + Send + Sync>,
+    pub(crate) generator: Arc<dyn Generator>,
 }
 
 
