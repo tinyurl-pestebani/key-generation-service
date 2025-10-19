@@ -20,6 +20,8 @@ FROM scratch
 # Copy the user and group files from the builder stage
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
+COPY --from=builder /etc/ssl /etc/ssl
+
 
 COPY --from=builder /usr/src/app/target/x86_64-unknown-linux-musl/release/key-generation-service /key-generation-service
 
